@@ -88,7 +88,7 @@
 </style>
 <style>
 /* =========================================================
-   PROOFS · Свет Миру · Быхов
+   PROOFS В· РЎРІРµС‚ РњРёСЂСѓ В· Р‘С‹С…РѕРІ
    Design system, layout, motion
    ========================================================= */
 
@@ -1923,7 +1923,7 @@ body:not(.is-loaded) .hero__title {
 }
 
 .gallery-card__media::after {
-  content: "открыть";
+  content: "РѕС‚РєСЂС‹С‚СЊ";
   position: absolute;
   left: 12px;
   bottom: 12px;
@@ -2945,7 +2945,7 @@ body.is-editing [data-image]:hover {
 
 body.is-editing .hero__frame::after,
 body.is-editing .about__media-inner::before {
-  content: "заменить фото";
+  content: "Р·Р°РјРµРЅРёС‚СЊ С„РѕС‚Рѕ";
   position: absolute;
   left: 50%;
   top: 50%;
@@ -4066,10 +4066,166 @@ body[data-page="church"] .ch-footer__dot:hover {
   background: rgba(242, 236, 225, 0.3);
 }
 
+
+/* ================= MOBILE POLISH v2 (shared) ================= */
+@media (max-width: 980px) {
+  .ch-about__media img { height: auto; }
+}
+@media (max-width: 720px) {
+  /* ---------- church ---------- */
+  body[data-page="church"] .ch-section { padding-block: 44px; }
+  .ch-section-head { margin-bottom: 24px; gap: 12px; }
+  .ch-section-head__side { font-size: 12.5px; line-height: 1.6; }
+  .ch-h2 { margin-top: 10px; font-size: clamp(27px, 7.6vw, 34px); line-height: 1.02; }
+  .ch-eyebrow { font-size: 8.5px; letter-spacing: 0.16em; }
+  .ch-lead { margin-top: 12px; font-size: 17px; line-height: 1.28; }
+
+  .ch-hero { min-height: 0; padding: 86px 0 34px; }
+  .ch-hero__ghost, .ch-hero__sun { display: none; }
+  .ch-hero__inner { grid-template-columns: 1fr; gap: 26px; }
+  .ch-hero__copy { padding-top: 0; }
+  .ch-hero__title { max-width: none; margin-top: 10px; font-size: clamp(46px, 13.8vw, 58px); line-height: 0.9; }
+  .ch-hero__sub { margin-top: 8px; font-size: 19px; line-height: 1.1; }
+  .ch-hero__lead { margin-top: 12px; font-size: 13px; line-height: 1.62; }
+  .ch-hero__actions { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 16px; }
+  .ch-btn { min-height: 42px; padding: 0 15px; font-size: 9.5px; gap: 9px; }
+  .ch-btn__icon { width: 22px; height: 22px; font-size: 11px; }
+  .ch-btn--quiet { min-height: 30px; padding: 0 2px; font-size: 9.5px; }
+  .ch-hero__note { max-width: 320px; margin-top: 14px; padding-left: 12px; font-size: 9.5px; line-height: 1.6; }
+  body[data-page="church"] .ch-hero__visual { gap: 12px; }
+  .ch-next { padding: 13px 15px; }
+  .ch-next__top, .ch-next__bottom { font-size: 8px; }
+  .ch-next__main { flex-direction: row; align-items: flex-end; margin: 8px 0; }
+  .ch-next__time { font-size: 38px; }
+  .ch-next__when { justify-items: end; padding-bottom: 2px; text-align: right; }
+  .ch-next__when span:first-child { font-size: 11px; }
+  .ch-next__when span:last-child { font-size: 9px; }
+  .ch-next__bottom { padding-top: 9px; }
+  .ch-hero__arch { aspect-ratio: 1.12; }
+  .ch-hero__caption { margin-top: 8px; font-size: 8px; }
+  .ch-hero__seal { right: 12px; bottom: 70px; width: 52px; height: 52px; font-size: 14px; }
+  .ch-hero__scroll { display: none; }
+
+  .ch-about__grid { gap: 24px; }
+  .ch-about__media { max-width: none; }
+  .ch-about__media img { height: auto; aspect-ratio: 1.15; border-radius: 50% 50% 6px 6px / 26% 26% 2% 2%; }
+  .ch-about__media figcaption { margin-top: 8px; font-size: 8px; }
+  .ch-about__text { margin-top: 12px; gap: 9px; font-size: 13px; line-height: 1.65; }
+  .ch-signature { margin-top: 14px; font-size: 17px; }
+  .ch-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 20px; }
+  .ch-stat, .ch-stat + .ch-stat { grid-template-columns: none; padding: 10px 8px 0 0; border-left: 0; border-top: 0; gap: 2px; }
+  .ch-stat + .ch-stat { padding-left: 8px; border-left: 1px solid var(--line-ch); }
+  .ch-stat__num { font-size: 24px; }
+  .ch-stat__label { font-size: 7px; letter-spacing: 0.06em; }
+
+  .ch-service { min-height: 0; padding: 18px; }
+  .ch-service__time { padding-top: 16px; font-size: clamp(46px, 14vw, 58px); }
+  .ch-service h3 { margin-top: 10px; font-size: 21px; }
+  .ch-service p { margin-top: 7px; font-size: 11.5px; line-height: 1.55; }
+  .ch-service__foot { margin-top: 16px; padding-top: 11px; font-size: 8px; }
+  .ch-service__ornament { right: 12px; bottom: 8px; font-size: 90px; }
+  .ch-schedule__featured { gap: 12px; }
+  .ch-schedule__small { margin-top: 12px; }
+  .ch-service-row { padding: 15px 0; }
+  .ch-service-row__day span:last-child { font-size: 20px; }
+
+  .ch-ministries__grid { gap: 12px; }
+  .ch-youth-card, .ch-women-card { min-height: 0; padding: 20px; }
+  .ch-youth-card__title { font-size: clamp(32px, 10vw, 40px); }
+  .ch-youth-card__schedule { gap: 3px; font-size: 15px; }
+  .ch-women-card__title { font-size: 42px; }
+  .ch-women-card__text { margin-top: 12px; font-size: 12px; }
+  .ch-women-card__time { margin-top: 14px; font-size: 22px; }
+  .ch-women-card__contact { padding-top: 16px; }
+
+  .ch-video__grid { gap: 26px; }
+  .ch-video-card h3 { font-size: 21px; }
+  .ch-video-card__body { gap: 6px; }
+  .ch-video-card__button { width: 44px; height: 44px; }
+
+  .ch-quote { padding: 44px 0; }
+  .ch-quote blockquote { font-size: 24px; }
+  .ch-quote__mark { top: -24px; font-size: 80px; }
+
+  .ch-contact__grid { gap: 26px; }
+  .ch-contact__title { max-width: none; margin-top: 10px; font-size: clamp(36px, 10.5vw, 46px); line-height: 0.95; }
+  .ch-contact__lead { margin-top: 14px; font-size: 12.5px; line-height: 1.6; }
+  .ch-contact__rows { margin-top: 26px; }
+  .ch-contact-row { grid-template-columns: 78px minmax(0, 1fr); gap: 10px; padding: 12px 0; }
+
+  .ch-value { padding: 14px 0; }
+  .ch-value h3 { font-size: 20px; }
+  .ch-gallery__rail .gallery-card { flex-basis: 72vw; }
+  .ch-footer { padding: 34px 0 22px; }
+
+  /* ---------- youth ---------- */
+  .section { padding: 46px 0; }
+  .section-head { margin-bottom: 24px; }
+  .section-head .eyebrow { margin-bottom: 14px; }
+  .section-head__side { font-size: 12px; line-height: 1.6; }
+  .h2 { font-size: clamp(27px, 7.8vw, 34px); line-height: 1.05; }
+
+  .hero { padding-top: 88px; }
+  .hero__inner { gap: 26px; }
+  .hero__kicker { margin-bottom: 16px; }
+  .hero__title-wrap { margin-bottom: 16px; }
+  .hero__ghost, .hero__title { font-size: clamp(44px, 14vw, 56px); }
+  .hero__sub { font-size: 19px; }
+  .hero__lede { gap: 12px; }
+  .hero__text { font-size: 13px; line-height: 1.6; }
+  .hero__note { font-size: 8px; }
+  .hero__actions { margin-top: 8px; gap: 14px; }
+  body[data-page="youth"] .btn { min-height: 42px; padding: 0 15px 0 18px; font-size: 9.5px; }
+  .hero__aside { gap: 12px; padding-top: 0; }
+  .hero__figure { width: 100%; max-width: none; justify-self: stretch; }
+  .hero__frame { aspect-ratio: 1.05; }
+  .next-meet { max-width: none; padding: 13px 15px; }
+  .next-meet__main { margin: 8px 0; }
+  .next-meet__time { font-size: 36px; }
+  .hero__scroll { display: none; }
+
+  .about__grid { gap: 20px; }
+  .about__media { margin-top: 0; }
+  .about__media-inner { aspect-ratio: 1.15; }
+  .about__copy { padding-top: 0; gap: 12px; }
+  .about__lead { margin-bottom: 2px; font-size: 18px; line-height: 1.3; }
+  .about__copy > p:not(.about__lead):not(.about__signature) { font-size: 13px; line-height: 1.62; }
+  .about__stats { margin-top: 20px; padding-top: 16px; gap: 8px; }
+  .stat { align-items: baseline; gap: 8px; }
+  .stat__num { font-size: 30px; }
+  .stat__label { padding-bottom: 0; font-size: 7.5px; }
+
+  .schedule-card { min-height: 0; padding: 20px; }
+  .schedule-card__time { margin: 18px 0 8px; font-size: clamp(46px, 14vw, 60px); }
+  .schedule-card h3 { margin-top: 10px; font-size: 21px; }
+  .schedule-card p { font-size: 12px; }
+  .schedule-card__foot { margin-top: 16px; padding-top: 10px; }
+
+  .quote-band { padding: 42px 0; }
+  .quote-band__words { display: none; }
+  .quote-band blockquote { margin: 18px auto 14px; font-size: 24px; line-height: 1.1; }
+
+  .events-empty { gap: 10px; padding: 26px 20px; }
+  .value { min-height: 0; padding: 16px 0; }
+  .value h3 { font-size: 19px; }
+  .value p { font-size: 12px; }
+  .contact-title { font-size: clamp(30px, 8.6vw, 36px); }
+  .contact-grid { gap: 26px; }
+  .contact-lead { margin-top: 14px; font-size: 12.5px; }
+  .contact-actions { margin-top: 22px; gap: 16px; }
+  .contact-card { margin-top: 0; min-height: 0; }
+  .contact-row { padding: 12px 0; }
+}
+@media (max-width: 720px) {
+  .schedule-foot a { color: var(--cream); border-bottom-color: rgba(242, 237, 228, 0.45); }
+}
+@media (max-width: 720px) {
+  [data-parallax] { transform: none !important; }
+}
 </style>
 <style>
 /* =========================================================
-   Свет Миру · church theme
+   РЎРІРµС‚ РњРёСЂСѓ В· church theme
    ========================================================= */
 
 body[data-page="church"] {
@@ -6951,6 +7107,162 @@ body[data-page="church"] .password-form .field input:focus {
   background: #fffaf2;
 }
 
+
+/* ================= MOBILE POLISH v2 (shared) ================= */
+@media (max-width: 980px) {
+  .ch-about__media img { height: auto; }
+}
+@media (max-width: 720px) {
+  /* ---------- church ---------- */
+  body[data-page="church"] .ch-section { padding-block: 44px; }
+  .ch-section-head { margin-bottom: 24px; gap: 12px; }
+  .ch-section-head__side { font-size: 12.5px; line-height: 1.6; }
+  .ch-h2 { margin-top: 10px; font-size: clamp(27px, 7.6vw, 34px); line-height: 1.02; }
+  .ch-eyebrow { font-size: 8.5px; letter-spacing: 0.16em; }
+  .ch-lead { margin-top: 12px; font-size: 17px; line-height: 1.28; }
+
+  .ch-hero { min-height: 0; padding: 86px 0 34px; }
+  .ch-hero__ghost, .ch-hero__sun { display: none; }
+  .ch-hero__inner { grid-template-columns: 1fr; gap: 26px; }
+  .ch-hero__copy { padding-top: 0; }
+  .ch-hero__title { max-width: none; margin-top: 10px; font-size: clamp(46px, 13.8vw, 58px); line-height: 0.9; }
+  .ch-hero__sub { margin-top: 8px; font-size: 19px; line-height: 1.1; }
+  .ch-hero__lead { margin-top: 12px; font-size: 13px; line-height: 1.62; }
+  .ch-hero__actions { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 16px; }
+  .ch-btn { min-height: 42px; padding: 0 15px; font-size: 9.5px; gap: 9px; }
+  .ch-btn__icon { width: 22px; height: 22px; font-size: 11px; }
+  .ch-btn--quiet { min-height: 30px; padding: 0 2px; font-size: 9.5px; }
+  .ch-hero__note { max-width: 320px; margin-top: 14px; padding-left: 12px; font-size: 9.5px; line-height: 1.6; }
+  body[data-page="church"] .ch-hero__visual { gap: 12px; }
+  .ch-next { padding: 13px 15px; }
+  .ch-next__top, .ch-next__bottom { font-size: 8px; }
+  .ch-next__main { flex-direction: row; align-items: flex-end; margin: 8px 0; }
+  .ch-next__time { font-size: 38px; }
+  .ch-next__when { justify-items: end; padding-bottom: 2px; text-align: right; }
+  .ch-next__when span:first-child { font-size: 11px; }
+  .ch-next__when span:last-child { font-size: 9px; }
+  .ch-next__bottom { padding-top: 9px; }
+  .ch-hero__arch { aspect-ratio: 1.12; }
+  .ch-hero__caption { margin-top: 8px; font-size: 8px; }
+  .ch-hero__seal { right: 12px; bottom: 70px; width: 52px; height: 52px; font-size: 14px; }
+  .ch-hero__scroll { display: none; }
+
+  .ch-about__grid { gap: 24px; }
+  .ch-about__media { max-width: none; }
+  .ch-about__media img { height: auto; aspect-ratio: 1.15; border-radius: 50% 50% 6px 6px / 26% 26% 2% 2%; }
+  .ch-about__media figcaption { margin-top: 8px; font-size: 8px; }
+  .ch-about__text { margin-top: 12px; gap: 9px; font-size: 13px; line-height: 1.65; }
+  .ch-signature { margin-top: 14px; font-size: 17px; }
+  .ch-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 20px; }
+  .ch-stat, .ch-stat + .ch-stat { grid-template-columns: none; padding: 10px 8px 0 0; border-left: 0; border-top: 0; gap: 2px; }
+  .ch-stat + .ch-stat { padding-left: 8px; border-left: 1px solid var(--line-ch); }
+  .ch-stat__num { font-size: 24px; }
+  .ch-stat__label { font-size: 7px; letter-spacing: 0.06em; }
+
+  .ch-service { min-height: 0; padding: 18px; }
+  .ch-service__time { padding-top: 16px; font-size: clamp(46px, 14vw, 58px); }
+  .ch-service h3 { margin-top: 10px; font-size: 21px; }
+  .ch-service p { margin-top: 7px; font-size: 11.5px; line-height: 1.55; }
+  .ch-service__foot { margin-top: 16px; padding-top: 11px; font-size: 8px; }
+  .ch-service__ornament { right: 12px; bottom: 8px; font-size: 90px; }
+  .ch-schedule__featured { gap: 12px; }
+  .ch-schedule__small { margin-top: 12px; }
+  .ch-service-row { padding: 15px 0; }
+  .ch-service-row__day span:last-child { font-size: 20px; }
+
+  .ch-ministries__grid { gap: 12px; }
+  .ch-youth-card, .ch-women-card { min-height: 0; padding: 20px; }
+  .ch-youth-card__title { font-size: clamp(32px, 10vw, 40px); }
+  .ch-youth-card__schedule { gap: 3px; font-size: 15px; }
+  .ch-women-card__title { font-size: 42px; }
+  .ch-women-card__text { margin-top: 12px; font-size: 12px; }
+  .ch-women-card__time { margin-top: 14px; font-size: 22px; }
+  .ch-women-card__contact { padding-top: 16px; }
+
+  .ch-video__grid { gap: 26px; }
+  .ch-video-card h3 { font-size: 21px; }
+  .ch-video-card__body { gap: 6px; }
+  .ch-video-card__button { width: 44px; height: 44px; }
+
+  .ch-quote { padding: 44px 0; }
+  .ch-quote blockquote { font-size: 24px; }
+  .ch-quote__mark { top: -24px; font-size: 80px; }
+
+  .ch-contact__grid { gap: 26px; }
+  .ch-contact__title { max-width: none; margin-top: 10px; font-size: clamp(36px, 10.5vw, 46px); line-height: 0.95; }
+  .ch-contact__lead { margin-top: 14px; font-size: 12.5px; line-height: 1.6; }
+  .ch-contact__rows { margin-top: 26px; }
+  .ch-contact-row { grid-template-columns: 78px minmax(0, 1fr); gap: 10px; padding: 12px 0; }
+
+  .ch-value { padding: 14px 0; }
+  .ch-value h3 { font-size: 20px; }
+  .ch-gallery__rail .gallery-card { flex-basis: 72vw; }
+  .ch-footer { padding: 34px 0 22px; }
+
+  /* ---------- youth ---------- */
+  .section { padding: 46px 0; }
+  .section-head { margin-bottom: 24px; }
+  .section-head .eyebrow { margin-bottom: 14px; }
+  .section-head__side { font-size: 12px; line-height: 1.6; }
+  .h2 { font-size: clamp(27px, 7.8vw, 34px); line-height: 1.05; }
+
+  .hero { padding-top: 88px; }
+  .hero__inner { gap: 26px; }
+  .hero__kicker { margin-bottom: 16px; }
+  .hero__title-wrap { margin-bottom: 16px; }
+  .hero__ghost, .hero__title { font-size: clamp(44px, 14vw, 56px); }
+  .hero__sub { font-size: 19px; }
+  .hero__lede { gap: 12px; }
+  .hero__text { font-size: 13px; line-height: 1.6; }
+  .hero__note { font-size: 8px; }
+  .hero__actions { margin-top: 8px; gap: 14px; }
+  body[data-page="youth"] .btn { min-height: 42px; padding: 0 15px 0 18px; font-size: 9.5px; }
+  .hero__aside { gap: 12px; padding-top: 0; }
+  .hero__figure { width: 100%; max-width: none; justify-self: stretch; }
+  .hero__frame { aspect-ratio: 1.05; }
+  .next-meet { max-width: none; padding: 13px 15px; }
+  .next-meet__main { margin: 8px 0; }
+  .next-meet__time { font-size: 36px; }
+  .hero__scroll { display: none; }
+
+  .about__grid { gap: 20px; }
+  .about__media { margin-top: 0; }
+  .about__media-inner { aspect-ratio: 1.15; }
+  .about__copy { padding-top: 0; gap: 12px; }
+  .about__lead { margin-bottom: 2px; font-size: 18px; line-height: 1.3; }
+  .about__copy > p:not(.about__lead):not(.about__signature) { font-size: 13px; line-height: 1.62; }
+  .about__stats { margin-top: 20px; padding-top: 16px; gap: 8px; }
+  .stat { align-items: baseline; gap: 8px; }
+  .stat__num { font-size: 30px; }
+  .stat__label { padding-bottom: 0; font-size: 7.5px; }
+
+  .schedule-card { min-height: 0; padding: 20px; }
+  .schedule-card__time { margin: 18px 0 8px; font-size: clamp(46px, 14vw, 60px); }
+  .schedule-card h3 { margin-top: 10px; font-size: 21px; }
+  .schedule-card p { font-size: 12px; }
+  .schedule-card__foot { margin-top: 16px; padding-top: 10px; }
+
+  .quote-band { padding: 42px 0; }
+  .quote-band__words { display: none; }
+  .quote-band blockquote { margin: 18px auto 14px; font-size: 24px; line-height: 1.1; }
+
+  .events-empty { gap: 10px; padding: 26px 20px; }
+  .value { min-height: 0; padding: 16px 0; }
+  .value h3 { font-size: 19px; }
+  .value p { font-size: 12px; }
+  .contact-title { font-size: clamp(30px, 8.6vw, 36px); }
+  .contact-grid { gap: 26px; }
+  .contact-lead { margin-top: 14px; font-size: 12.5px; }
+  .contact-actions { margin-top: 22px; gap: 16px; }
+  .contact-card { margin-top: 0; min-height: 0; }
+  .contact-row { padding: 12px 0; }
+}
+@media (max-width: 720px) {
+  .schedule-foot a { color: var(--cream); border-bottom-color: rgba(242, 237, 228, 0.45); }
+}
+@media (max-width: 720px) {
+  [data-parallax] { transform: none !important; }
+}
 </style>
     <script>
       try {
