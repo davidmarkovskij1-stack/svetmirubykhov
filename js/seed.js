@@ -110,7 +110,7 @@ window.PROOFS_SEED = {
       galleryEyebrow: "06 — Атмосфера",
       galleryTitle: "Наша церковь.",
       galleryHint: "потяните в сторону",
-      galleryFoot: "Больше фото и видео — в",
+      galleryFoot: "Больше фото и видео — на",
 
       valuesEyebrow: "07 — Что важно",
       valuesTitle: "Простая вера. Настоящие люди.",
