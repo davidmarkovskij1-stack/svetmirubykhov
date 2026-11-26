@@ -52,7 +52,6 @@
         },
         "telephone": "+375 29 543 2177",
         "sameAs": [
-          "https://www.instagram.com/svetmiru2026/",
           "https://www.youtube.com/@ЦерковьСветмируБыхов"
         ],
         "event": [
@@ -452,14 +451,14 @@
               <p class="ch-section-head__side" data-field="church.sections.videoSide" data-reveal>
                 Записи воскресных и вечерних служений. Смотрите здесь или на YouTube-канале церкви.
               </p>
-              <a class="ch-live-link" href="https://www.youtube.com/@ЦерковьСветмируБыхов/live" target="_blank" rel="noopener" data-href="church.site.youtubeLive" data-cursor="link">
+              <a class="ch-live-link" id="live-link" hidden href="https://www.youtube.com/@ЦерковьСветмируБыхов/live" target="_blank" rel="noopener" data-href="church.site.youtubeLive" data-cursor="link">
                 <span class="ch-live-link__dot" aria-hidden="true"></span>
                 <span data-field="church.sections.videoLive">Смотреть трансляцию</span>
               </a>
             </div>
           </header>
 
-          <div class="ch-video__grid">
+          <div class="ch-video__grid" id="video-grid">
             <article class="ch-video-card" data-reveal>
               <button class="ch-video-card__play" type="button" data-video-id="E9go225_lOo" data-video-title="Не проиграй, соревнуясь с пешими" aria-label="Смотреть видео: Не проиграй, соревнуясь с пешими">
                 <img data-image="church.videos.0.thumb" data-image-alt="church.videos.0.thumbAlt" src="assets/img/video-1-640.webp" width="640" height="360" alt="Проповедь «Не проиграй, соревнуясь с пешими»" loading="lazy" decoding="async" />
@@ -550,8 +549,8 @@
         <div class="ch-gallery__rail" id="gallery-track"></div>
         <div class="ch-container">
           <p class="ch-gallery__foot" data-reveal>
-            <span data-field="church.sections.galleryFoot">Больше фото и видео — в</span>
-            <a href="https://www.instagram.com/svetmiru2026/" target="_blank" rel="noopener" data-href="church.site.instagram" data-field="church.site.instagramHandle" data-cursor="link">@svetmiru2026</a>.
+            <span data-field="church.sections.galleryFoot">Больше фото и видео — на</span>
+            <a href="https://www.youtube.com/@ЦерковьСветмируБыхов" target="_blank" rel="noopener" data-href="church.site.youtube" data-cursor="link">YouTube-канале церкви</a>.
           </p>
         </div>
       </section>
@@ -626,10 +625,6 @@
                 <a href="tel:+375295432177" data-field="church.site.phone" data-href="church.site.phoneHref" data-cursor="link">+375 29 543 2177</a>
               </div>
               <div class="ch-contact-row">
-                <span data-field="church.sections.contactLabelInstagram">Instagram</span>
-                <a href="https://www.instagram.com/svetmiru2026/" target="_blank" rel="noopener" data-field="church.site.instagramHandle" data-href="church.site.instagram" data-cursor="link">@svetmiru2026</a>
-              </div>
-              <div class="ch-contact-row">
                 <span data-field="church.sections.contactLabelYoutube">YouTube</span>
                 <a href="https://www.youtube.com/@ЦерковьСветмируБыхов" target="_blank" rel="noopener" data-field="church.site.youtubeHandle" data-href="church.site.youtube" data-cursor="link">Церковь Свет миру Быхов</a>
               </div>
@@ -667,7 +662,6 @@
           </a>
           <p class="ch-footer__note" data-field="church.site.footerNote">РО ХВЕ «Церковь Свет миру» · г. Быхов</p>
           <div class="ch-footer__links">
-            <a href="https://www.instagram.com/svetmiru2026/" target="_blank" rel="noopener" data-href="church.site.instagram" data-field="church.site.footerInstagram" data-cursor="link">Instagram ↗</a>
             <a href="https://www.youtube.com/@ЦерковьСветмируБыхов" target="_blank" rel="noopener" data-href="church.site.youtube" data-field="church.site.footerYoutube" data-cursor="link">YouTube ↗</a>
             <a href="https://yandex.by/maps/org/svet_miru/105127877484/" target="_blank" rel="noopener" data-href="church.site.map" data-field="church.site.footerMap" data-cursor="link">Карта ↗</a>
           </div>

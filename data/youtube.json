@@ -1,0 +1,59 @@
+{
+  "updatedAt": "2026-11-26T09:48:23+00:00",
+  "live": {
+    "isLive": false,
+    "videoId": "",
+    "title": "",
+    "checkedAt": "2026-11-26T09:48:23+00:00"
+  },
+  "videos": [
+    {
+      "id": "Ddl8UPDwLpg",
+      "title": "Мудрость Божья и мудрость человеческая",
+      "speaker": "Иван Дидух",
+      "kind": "Вечернее служение",
+      "published": "2026-11-26T05:02:52+00:00",
+      "thumb": "https://i.ytimg.com/vi/Ddl8UPDwLpg/hqdefault.jpg"
+    },
+    {
+      "id": "E9go225_lOo",
+      "title": "Не проиграй, соревнуясь с пешими",
+      "speaker": "Лакович Юлия",
+      "kind": "Воскресное служение",
+      "published": "2026-11-22T23:26:12+00:00",
+      "thumb": "https://i.ytimg.com/vi/E9go225_lOo/hqdefault.jpg"
+    },
+    {
+      "id": "QWeHat8q20k",
+      "title": "Сила, которой нет равных",
+      "speaker": "Марковский Дмитрий",
+      "kind": "Вечернее служение",
+      "published": "2026-11-19T05:15:25+00:00",
+      "thumb": "https://i.ytimg.com/vi/QWeHat8q20k/hqdefault.jpg"
+    },
+    {
+      "id": "lY8hYqoxwO8",
+      "title": "Сила благодарности",
+      "speaker": "Павел Марковский",
+      "kind": "Воскресное служение",
+      "published": "2026-11-15T21:22:00+00:00",
+      "thumb": "https://i.ytimg.com/vi/lY8hYqoxwO8/hqdefault.jpg"
+    },
+    {
+      "id": "sgomsf_uPWo",
+      "title": "Не отваленный камень -Ляшко Александр | Вечернее служение",
+      "speaker": "",
+      "kind": "",
+      "published": "2026-11-12T06:00:43+00:00",
+      "thumb": "https://i.ytimg.com/vi/sgomsf_uPWo/hqdefault.jpg"
+    },
+    {
+      "id": "lIjKuyjmrc8",
+      "title": "Держи, что имеешь",
+      "speaker": "Дмитрий Марковский",
+      "kind": "Воскресенье  служение",
+      "published": "2026-11-08T21:22:30+00:00",
+      "thumb": "https://i.ytimg.com/vi/lIjKuyjmrc8/hqdefault.jpg"
+    }
+  ]
+}

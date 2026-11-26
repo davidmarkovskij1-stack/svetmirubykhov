@@ -1365,6 +1365,10 @@ body.menu-open .ch-mobile-menu {
   transition: background 0.3s, color 0.3s;
 }
 
+.ch-live-link[hidden] {
+  display: none;
+}
+
 .ch-live-link:hover {
   background: var(--paper);
   color: var(--forest);

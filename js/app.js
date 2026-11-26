@@ -2310,41 +2310,28 @@
     const title = $("#video-modal-title");
     let opener = null;
 
-    const videoButtons = $$("[data-video-id]");
-    const youtubeId = (url) => {
-      if (!url) return "";
-      try {
-        const parsed = new URL(url, location.href);
-        if (parsed.hostname.includes("youtu.be")) {
-          return parsed.pathname.replace(/^\/+/, "").split("/")[0];
-        }
-        return parsed.searchParams.get("v") || "";
-      } catch (error) {
-        return "";
-      }
+    const open = (button) => {
+      const id = button.dataset.videoId;
+      if (!id || !frame) return;
+      const card = button.closest(".ch-video-card");
+      const heading = card && card.querySelector("h3");
+      const label = button.dataset.videoTitle || (heading && heading.textContent) || "Видео";
+      opener = button;
+      frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0&modestbranding=1`;
+      frame.title = label;
+      if (title) title.textContent = label;
+      modal.hidden = false;
+      modal.setAttribute("aria-hidden", "false");
+      updateLock();
+      const close = $(".video-modal__close", modal);
+      if (close) close.focus({ preventScroll: true });
     };
 
-    videoButtons.forEach((button, index) => {
-      button.addEventListener("click", () => {
-        const videos = Array.isArray(pageData().videos) ? pageData().videos : [];
-        const video = videos[index] || {};
-        const id = youtubeId(video.url) || button.dataset.videoId;
-        if (!id || !frame) return;
-        const label =
-          video.title ||
-          (button.closest(".ch-video-card") && button.closest(".ch-video-card").querySelector("h3")?.textContent) ||
-          button.dataset.videoTitle ||
-          "Видео";
-        opener = button;
-        frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0&modestbranding=1`;
-        frame.title = label;
-        if (title) title.textContent = label;
-        modal.hidden = false;
-        modal.setAttribute("aria-hidden", "false");
-        updateLock();
-        const close = $(".video-modal__close", modal);
-        if (close) close.focus({ preventScroll: true });
-      });
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      const button = target && target.closest ? target.closest("[data-video-id]") : null;
+      if (!button || modal.contains(button)) return;
+      open(button);
     });
 
     $$("[data-video-close]", modal).forEach((element) => {
@@ -2362,6 +2349,94 @@
     }
 
     window.PROOFS_CLOSE_VIDEO = closeVideo;
+  }
+
+  /* -------------------------------------------------------
+     YouTube feed — данные обновляет GitHub Actions
+     ------------------------------------------------------- */
+
+  const YOUTUBE_FEED_URL =
+    "https://raw.githubusercontent.com/davidmarkovskij1-stack/svetmirubykhov/main/data/youtube.json";
+
+  function escapeText(value) {
+    return String(value == null ? "" : value).replace(/[&<>"']/g, (char) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char],
+    );
+  }
+
+  function ruDate(value) {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return "";
+    return new Intl.DateTimeFormat("ru-RU", { day: "numeric", month: "long", year: "numeric" })
+      .format(date)
+      .replace(/\s*г\.$/, "");
+  }
+
+  async function fetchFeed(url, timeout) {
+    if (typeof fetch !== "function") return null;
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), timeout);
+    try {
+      const response = await fetch(url, { signal: controller.signal, cache: "no-store" });
+      return response.ok ? await response.json() : null;
+    } catch (error) {
+      return null;
+    } finally {
+      window.clearTimeout(timer);
+    }
+  }
+
+  function videoCardMarkup(video) {
+    const title = escapeText(video.title || "Видео");
+    const id = encodeURIComponent(video.id || "");
+    const thumb = escapeText(video.thumb || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`);
+    const kind = video.kind ? `<span class="ch-video-card__kind">${escapeText(video.kind)}</span>` : "";
+    const meta = [video.speaker, ruDate(video.published)]
+      .filter(Boolean)
+      .map(escapeText)
+      .join(" · ");
+    return `
+      <article class="ch-video-card">
+        <button class="ch-video-card__play" type="button" data-video-id="${id}" data-video-title="${title}" aria-label="Смотреть видео: ${title}">
+          <img src="${thumb}" width="640" height="360" alt="Проповедь «${title}»" loading="lazy" decoding="async" />
+          <span class="ch-video-card__shade" aria-hidden="true"></span>
+          <span class="ch-video-card__button" aria-hidden="true"><span>▶</span></span>
+        </button>
+        <div class="ch-video-card__body">
+          ${kind}
+          <h3>${title}</h3>
+          <p>${meta}</p>
+          <a href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener">Смотреть на YouTube ↗</a>
+        </div>
+      </article>`;
+  }
+
+  function applyLiveState(live) {
+    const link = document.getElementById("live-link");
+    if (!link) return;
+    const checked = live && live.checkedAt ? Date.parse(live.checkedAt) : 0;
+    const fresh = Number.isFinite(checked) && Date.now() - checked < 25 * 60 * 1000;
+    if (live && live.isLive && fresh) {
+      const fallback = link.getAttribute("href");
+      link.href = live.videoId
+        ? `https://www.youtube.com/watch?v=${encodeURIComponent(live.videoId)}`
+        : fallback;
+      link.hidden = false;
+    } else {
+      link.hidden = true;
+    }
+  }
+
+  async function initYoutubeFeed() {
+    const grid = document.getElementById("video-grid");
+    if (!grid) return;
+    let data = await fetchFeed(`${YOUTUBE_FEED_URL}?t=${Date.now()}`, 7000);
+    if (!data) data = await fetchFeed("data/youtube.json", 4000);
+    if (!data) return;
+    if (Array.isArray(data.videos) && data.videos.length) {
+      grid.innerHTML = data.videos.slice(0, 3).map(videoCardMarkup).join("");
+    }
+    applyLiveState(data.live);
   }
 
   /* -------------------------------------------------------
@@ -2436,6 +2511,7 @@
     renderNextMeeting();
     window.setInterval(renderNextMeeting, 60_000);
     boot();
+    initYoutubeFeed();
   }
 
   if (document.readyState === "loading") {
