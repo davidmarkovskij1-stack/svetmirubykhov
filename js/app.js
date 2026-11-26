@@ -2367,7 +2367,7 @@
   function ruDate(value) {
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) return "";
-    return new Intl.DateTimeFormat("ru-RU", { day: "numeric", month: "long", year: "numeric" })
+    return new Intl.DateTimeFormat("ru-RU", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })
       .format(date)
       .replace(/\s*г\.$/, "");
   }
@@ -2391,7 +2391,7 @@
     const id = encodeURIComponent(video.id || "");
     const thumb = escapeText(video.thumb || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`);
     const kind = video.kind ? `<span class="ch-video-card__kind">${escapeText(video.kind)}</span>` : "";
-    const meta = [video.speaker, ruDate(video.published)]
+    const meta = [video.speaker, ruDate(video.date || video.published)]
       .filter(Boolean)
       .map(escapeText)
       .join(" · ");

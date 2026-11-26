@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-11-26T09:50:22+00:00",
+  "updatedAt": "2026-11-26T09:53:42+00:00",
   "live": {
     "isLive": false,
     "videoId": "",
     "title": "",
-    "checkedAt": "2026-11-26T09:50:22+00:00"
+    "checkedAt": "2026-11-26T09:53:42+00:00"
   },
   "videos": [
     {
@@ -13,6 +13,7 @@
       "speaker": "Иван Дидух",
       "kind": "Вечернее служение",
       "published": "2026-11-26T05:02:52+00:00",
+      "date": "2026-11-25",
       "thumb": "https://i.ytimg.com/vi/Ddl8UPDwLpg/hqdefault.jpg"
     },
     {
@@ -21,6 +22,7 @@
       "speaker": "Лакович Юлия",
       "kind": "Воскресное служение",
       "published": "2026-11-22T23:26:12+00:00",
+      "date": "2026-11-22",
       "thumb": "https://i.ytimg.com/vi/E9go225_lOo/hqdefault.jpg"
     },
     {
@@ -29,6 +31,7 @@
       "speaker": "Марковский Дмитрий",
       "kind": "Вечернее служение",
       "published": "2026-11-19T05:15:25+00:00",
+      "date": "2026-11-18",
       "thumb": "https://i.ytimg.com/vi/QWeHat8q20k/hqdefault.jpg"
     },
     {
@@ -37,6 +40,7 @@
       "speaker": "Павел Марковский",
       "kind": "Воскресное служение",
       "published": "2026-11-15T21:22:00+00:00",
+      "date": "2026-11-15",
       "thumb": "https://i.ytimg.com/vi/lY8hYqoxwO8/hqdefault.jpg"
     },
     {
@@ -45,6 +49,7 @@
       "speaker": "",
       "kind": "",
       "published": "2026-11-12T06:00:43+00:00",
+      "date": "2026-11-12",
       "thumb": "https://i.ytimg.com/vi/sgomsf_uPWo/hqdefault.jpg"
     },
     {
@@ -53,6 +58,7 @@
       "speaker": "Дмитрий Марковский",
       "kind": "Воскресенье  служение",
       "published": "2026-11-08T21:22:30+00:00",
+      "date": "2026-11-08",
       "thumb": "https://i.ytimg.com/vi/lIjKuyjmrc8/hqdefault.jpg"
     }
   ]

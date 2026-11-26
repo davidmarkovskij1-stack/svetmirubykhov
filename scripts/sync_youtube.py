@@ -13,7 +13,7 @@ import re
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 CHANNEL_ID = "UCww4NuLLI4zRLHkPz1tX9HQ"
@@ -28,6 +28,7 @@ NS = {
     "yt": "http://www.youtube.com/xml/schemas/2015",
     "media": "http://search.yahoo.com/mrss/",
 }
+MINSK = timezone(timedelta(hours=3))
 
 
 def fetch(url: str, timeout: int = 30) -> tuple[str, str]:
@@ -55,6 +56,21 @@ def split_title(raw: str) -> dict[str, str]:
     return {"title": raw.strip(), "speaker": "", "kind": ""}
 
 
+def service_date(published: str, kind: str) -> str:
+    """Date of the service itself (Sunday or Wednesday), not the upload time."""
+    try:
+        moment = datetime.fromisoformat(published.replace("Z", "+00:00")).astimezone(MINSK)
+    except ValueError:
+        return published[:10]
+    lowered = kind.lower()
+    target = 6 if "воскрес" in lowered else 2 if "вечерн" in lowered else None
+    if target is None:
+        return moment.date().isoformat()
+    while moment.weekday() != target:
+        moment -= timedelta(days=1)
+    return moment.date().isoformat()
+
+
 def videos() -> list[dict[str, str]]:
     _, body = fetch(RSS_URL)
     root = ET.fromstring(body)
@@ -70,6 +86,7 @@ def videos() -> list[dict[str, str]]:
             "id": video_id,
             **parts,
             "published": published,
+            "date": service_date(published, parts["kind"]),
             "thumb": f"https://i.ytimg.com/vi/{video_id}/hqdefault.jpg",
         })
         if len(result) >= 6:
