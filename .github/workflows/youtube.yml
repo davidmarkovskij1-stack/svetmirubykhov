@@ -2,7 +2,7 @@ name: YouTube sync
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
   push:
     paths:
@@ -25,14 +25,26 @@ jobs:
           python-version: "3.12"
       - name: Fetch channel feed
         run: python scripts/sync_youtube.py
-      - name: Commit changes
+      - name: Commit when the channel changed
         run: |
-          if git diff --quiet -- data/youtube.json; then
-            echo "No changes"
-            exit 0
+          python - <<'PY'
+          import json, pathlib, subprocess
+          new = json.loads(pathlib.Path('data/youtube.json').read_text(encoding='utf-8'))
+          try:
+              old = json.loads(subprocess.check_output(['git', 'show', 'HEAD:data/youtube.json'], text=True))
+          except Exception:
+              old = {}
+          def signature(data):
+              live = data.get('live') or {}
+              return {'videos': data.get('videos'), 'live': {key: live.get(key) for key in ('isLive', 'videoId')}}
+          pathlib.Path('_state_changed').write_text('1' if signature(new) != signature(old) else '')
+          PY
+          if [ -s _state_changed ]; then
+            git config user.name 'youtube-sync[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add data/youtube.json
+            git commit -m 'chore: sync YouTube feed'
+            git push
+          else
+            echo 'No channel changes'
           fi
-          git config user.name "youtube-sync[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/youtube.json
-          git commit -m "chore: sync YouTube feed"
-          git push

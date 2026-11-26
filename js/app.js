@@ -2355,8 +2355,11 @@
      YouTube feed — данные обновляет GitHub Actions
      ------------------------------------------------------- */
 
-  const YOUTUBE_FEED_URL =
-    "https://raw.githubusercontent.com/davidmarkovskij1-stack/svetmirubykhov/main/data/youtube.json";
+  const YOUTUBE_FEED_URLS = [
+    "https://davidmarkovskij1-stack.github.io/svetmirubykhov/data/youtube.json",
+    "https://raw.githubusercontent.com/davidmarkovskij1-stack/svetmirubykhov/main/data/youtube.json",
+    "data/youtube.json",
+  ];
 
   function escapeText(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, (char) =>
@@ -2415,7 +2418,7 @@
     const link = document.getElementById("live-link");
     if (!link) return;
     const checked = live && live.checkedAt ? Date.parse(live.checkedAt) : 0;
-    const fresh = Number.isFinite(checked) && Date.now() - checked < 25 * 60 * 1000;
+    const fresh = Number.isFinite(checked) && Date.now() - checked < 4 * 60 * 60 * 1000;
     if (live && live.isLive && fresh) {
       const fallback = link.getAttribute("href");
       link.href = live.videoId
@@ -2430,13 +2433,15 @@
   async function initYoutubeFeed() {
     const grid = document.getElementById("video-grid");
     if (!grid) return;
-    let data = await fetchFeed(`${YOUTUBE_FEED_URL}?t=${Date.now()}`, 7000);
-    if (!data) data = await fetchFeed("data/youtube.json", 4000);
-    if (!data) return;
-    if (Array.isArray(data.videos) && data.videos.length) {
-      grid.innerHTML = data.videos.slice(0, 3).map(videoCardMarkup).join("");
+    for (const url of YOUTUBE_FEED_URLS) {
+      const data = await fetchFeed(`${url}?t=${Date.now()}`, 6000);
+      if (!data) continue;
+      if (Array.isArray(data.videos) && data.videos.length) {
+        grid.innerHTML = data.videos.slice(0, 3).map(videoCardMarkup).join("");
+      }
+      applyLiveState(data.live);
+      return;
     }
-    applyLiveState(data.live);
   }
 
   /* -------------------------------------------------------
